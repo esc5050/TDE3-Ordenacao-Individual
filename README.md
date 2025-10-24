@@ -1,6 +1,6 @@
 # TDE 3 - Ordenação Individual
 
-> Aluno: Gustavo Lona Grespan
+Aluno: Gustavo Lona Grespan
 
 ## Algoritmos implementados
 
@@ -85,13 +85,3 @@ Vetor: `[99, 85, 73, 60, 50, 40, 35, 30, 25, 20, 15, 14, 13, 12, 11, 10, 9, 8, 7
 **Rank (menos swaps)**: 1) Selection (10) — 2) Comb (18) — 3) Bucket (63) — 4) Bubble/Cocktail/Gnome (190).
 
 **Rank (menos loops)**: 1) Comb & Bucket (138 emp.) — 2) Cocktail (200) — 3) Selection (209) — 4) Bubble (400) — 5) Gnome (780).
-
----
-
-## Implementação e métricas
-
-* `swaps`: conta apenas as trocas explícitas entre elementos do array (cada atribuição que troca duas posições conta como 1 swap).
-* `loops`: conta as iterações executadas por laços `for` e `while`. Cada vez que um laço executa uma volta incrementa +1 no contador.
-* `Bucket Sort` foi implementado com `k = 5` buckets fixos, cada bucket com capacidade `N` e ordenação por insertion sort para cada bucket.
-* `Comb Sort` usa fator de redução `shrink = 1.3`.
-* `Selection Sort` e demais implementações seguem as versões padrão, adaptadas para contar `swaps` e `loops` e obedecer às restrições do enunciado.
