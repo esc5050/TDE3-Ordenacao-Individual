@@ -1,68 +1,97 @@
 # TDE 3 - Ordenação Individual
 
-Implementações **Java** de:
-- Comb Sort
-- Gnome Sort
-- Bucket Sort
+> Aluno: Gustavo Lona Grespan
 
-E comparação com:
-- Bubble Sort (flag de parada)
-- Selection Sort
-- Cocktail Sort
+## Algoritmos implementados
 
-**Restrições respeitadas**: O projeto usa apenas tipos primitivos, `String`, `try-catch` e operações básicas.
-
-## Resultado & tabelas
-As tabelas produzidas pelo programa mostram, para cada algoritmo e para cada vetor de teste:
-- `swaps` — quantidade de trocas / movimentos de elementos
-- `loopIters` — quantas vezes corpos de laços foram executados
-- `comparisons` — comparações entre elementos
-
-## Resultados de desempenho (tabelas)
-
-### Vetor 1 — aleatório
-| Algoritmo        | Trocas (swaps) | Iterações (loops) | Comparações |
-|------------------|----------------:|-------------------:|-------------:|
-| Selection Sort   | 18  | 209 | 190 |
-| Comb Sort        | 22  | 138 | 129 |
-| Bucket Sort      | 60  | 81  | 60  |
-| Cocktail Sort    | 78  | 160 | 154 |
-| Gnome Sort       | 78  | 174 | 174 |
-| Bubble (flag)    | 78  | 300 | 285 |
-
-**Ranking (menos trocas):** Selection → Comb → Bucket → Gnome/Bubble/Cocktail  
-**Ranking (menos iterações):** Bucket → Comb → Cocktail → Gnome → Selection → Bubble
+* Comb Sort
+* Gnome Sort
+* Bucket Sort (com buckets estáticos)
+* Bubble Sort com flag de parada
+* Selection Sort
+* Cocktail Sort
 
 ---
 
-### Vetor 2 — já ordenado
-| Algoritmo        | Trocas (swaps) | Iterações (loops) | Comparações |
-|------------------|----------------:|-------------------:|-------------:|
-| Comb Sort        | 0   | 118 | 110 |
-| Gnome Sort       | 0   | 19  | 19  |
-| Bubble (flag)    | 0   | 20  | 19  |
-| Cocktail Sort    | 0   | 20  | 19  |
-| Selection Sort   | 0   | 209 | 190 |
-| Bucket Sort      | 40  | 61  | 40  |
+O arquivo `Main.java` contém todas as implementações e imprime os resultados.
 
-**Ranking (menos trocas):** Comb/Gnome/Bubble/Cocktail/Selection (empate em 0)  
-**Ranking (menos iterações):** Gnome → Bubble/Cocktail → Bucket → Comb → Selection
+IDE utilizada: IntelliJ
 
 ---
 
-### Vetor 3 — decrescente (pior caso)
-| Algoritmo        | Trocas (swaps) | Iterações (loops) | Comparações |
-|------------------|----------------:|-------------------:|-------------:|
-| Selection Sort   | 10  | 209 | 190 |
-| Comb Sort        | 18  | 138 | 129 |
-| Bucket Sort      | 113 | 134 | 113 |
-| Cocktail Sort    | 190 | 200 | 190 |
-| Gnome Sort       | 190 | 380 | 380 |
-| Bubble (flag)    | 190 | 400 | 380 |
+## Vetores usados
 
-**Ranking (menos trocas):** Selection → Comb → Bucket → Gnome/Bubble/Cocktail  
-**Ranking (menos iterações):** Bucket → Comb → Cocktail → Selection → Gnome → Bubble
+* `vetor1 = {12, 18, 9, 25, 17, 31, 22, 27, 16, 13, 19, 23, 20, 30, 14, 11, 15, 24, 26, 28}`
+* `vetor2 = {5, 7, 9, 10, 12, 14, 15, 17, 19, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32}`
+* `vetor3 = {99, 85, 73, 60, 50, 40, 35, 30, 25, 20, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6}`
 
 ---
 
-- O arquivo `SortingComparison.java` tem todas as implementações e uma rotina que imprime essas tabelas no console.
+## Resultado
+
+> As tabelas abaixo são os valores impressos pelo `Main.java` executado no IntelliJ.
+
+### Vetor 1 (misturado)
+
+Vetor: `[12, 18, 9, 25, 17, 31, 22, 27, 16, 13, 19, 23, 20, 30, 14, 11, 15, 24, 26, 28]`
+
+| Algoritmo  | Swaps | Loops |
+| ---------- | ----: | ----: |
+| BubbleFlag |    78 |   300 |
+| Selection  |    18 |   209 |
+| Cocktail   |    78 |   160 |
+| Gnome      |    78 |   350 |
+| Comb       |    22 |   138 |
+| Bucket     |    22 |    97 |
+
+**Rank (menos swaps)**: 1) Selection (18) — 2) Comb / Bucket (22) — 3) Bubble / Cocktail / Gnome (78).
+
+**Rank (menos loops)**: 1) Bucket (97) — 2) Comb (138) — 3) Cocktail (160) — 4) Selection (209) — 5) Bubble (300) — 6) Gnome (350).
+
+---
+
+### Vetor 2 (ordenado)
+
+Vetor: `[5, 7, 9, 10, 12, 14, 15, 17, 19, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32]`
+
+| Algoritmo  | Swaps | Loops |
+| ---------- | ----: | ----: |
+| BubbleFlag |     0 |    20 |
+| Selection  |     0 |   209 |
+| Cocktail   |     0 |    20 |
+| Gnome      |     0 |    39 |
+| Comb       |     0 |   118 |
+| Bucket     |     0 |    75 |
+
+**Rank (menos swaps)**: todos 0 (empate).
+
+**Rank (menos loops)**: 1) Bubble / Cocktail (20) — 2) Gnome (39) — 3) Bucket (75) — 4) Comb (118) — 5) Selection (209).
+
+---
+
+### Vetor 3 (decrescente)
+
+Vetor: `[99, 85, 73, 60, 50, 40, 35, 30, 25, 20, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6]`
+
+| Algoritmo  | Swaps | Loops |
+| ---------- | ----: | ----: |
+| BubbleFlag |   190 |   400 |
+| Selection  |    10 |   209 |
+| Cocktail   |   190 |   200 |
+| Gnome      |   190 |   780 |
+| Comb       |    18 |   138 |
+| Bucket     |    63 |   138 |
+
+**Rank (menos swaps)**: 1) Selection (10) — 2) Comb (18) — 3) Bucket (63) — 4) Bubble/Cocktail/Gnome (190).
+
+**Rank (menos loops)**: 1) Comb & Bucket (138 emp.) — 2) Cocktail (200) — 3) Selection (209) — 4) Bubble (400) — 5) Gnome (780).
+
+---
+
+## Implementação e métricas
+
+* `swaps`: conta apenas as trocas explícitas entre elementos do array (cada atribuição que troca duas posições conta como 1 swap).
+* `loops`: conta as iterações executadas por laços `for` e `while`. Cada vez que um laço executa uma volta incrementa +1 no contador.
+* `Bucket Sort` foi implementado com `k = 5` buckets fixos, cada bucket com capacidade `N` e ordenação por insertion sort para cada bucket.
+* `Comb Sort` usa fator de redução `shrink = 1.3`.
+* `Selection Sort` e demais implementações seguem as versões padrão, adaptadas para contar `swaps` e `loops` e obedecer às restrições do enunciado.
